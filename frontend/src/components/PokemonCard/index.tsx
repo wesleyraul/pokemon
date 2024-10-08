@@ -29,7 +29,7 @@ export default function PokemonCard({
 
   return (
     <div
-      className={`overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg min-h-[350px] max-h-[350px] min-w-[320px] ${cardColor}`}
+      className={`overflow-hidden  rounded-lg max-w-xs shadow-lg min-h-[350px] max-h-[350px] min-w-[320px] ${cardColor}`}
     >
       <div className="relative pt-10 px-10 flex items-center justify-center">
         <Image
