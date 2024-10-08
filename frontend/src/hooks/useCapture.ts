@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pokemon } from "@/hooks/usePokemon"; // Importe a interface correta se necessário
+import { Pokemon } from "@/hooks/usePokemon";
 
 export function useCapture(
   pokemon: Pokemon | null,
