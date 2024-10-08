@@ -18,6 +18,7 @@ export default function Card() {
     <PokemonCard
       pokemon={pokemon}
       cardColor={cardColor}
+      showActionButtons={true}
       onCapture={tryCapturePokemon}
       onSearchNew={fetchRandomPokemon}
     />

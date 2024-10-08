@@ -1,6 +1,6 @@
 interface ActionButtonsProps {
-  onCapture: () => void;
-  onSearchNew: () => void;
+  onCapture?: () => void;
+  onSearchNew?: () => void;
 }
 
 export default function ActionButtons({

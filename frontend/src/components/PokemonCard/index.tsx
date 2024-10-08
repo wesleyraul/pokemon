@@ -1,24 +1,19 @@
 import Image from "next/image";
 import ActionButtons from "@/components/ActionButtons";
-
-interface Pokemon {
-  sprites: {
-    front_default: string;
-  };
-  name: string;
-  types: [{ type: { name: string } }];
-}
+import { Pokemon } from "@/interfaces/pokemon.interface";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
   cardColor: string;
-  onCapture: () => void;
-  onSearchNew: () => void;
+  showActionButtons?: boolean;
+  onCapture?: () => void;
+  onSearchNew?: () => void;
 }
 
 export default function PokemonCard({
   pokemon,
   cardColor,
+  showActionButtons = false,
   onCapture,
   onSearchNew,
 }: PokemonCardProps) {
@@ -29,7 +24,7 @@ export default function PokemonCard({
 
   return (
     <div
-      className={`overflow-hidden  rounded-lg max-w-xs shadow-lg min-h-[350px] max-h-[350px] min-w-[320px] ${cardColor}`}
+      className={`overflow-hidden rounded-lg max-w-xs shadow-lg min-h-[350px] max-h-[350px] min-w-[320px] ${cardColor}`}
     >
       <div className="relative pt-10 px-10 flex items-center justify-center">
         <Image
@@ -42,7 +37,9 @@ export default function PokemonCard({
       <div className="relative text-white px-6 pb-6">
         <span className="block opacity-75 -mb-1">{pokemonType}</span>
         <span className="block font-semibold text-xl">{pokemonName}</span>
-        <ActionButtons onCapture={onCapture} onSearchNew={onSearchNew} />
+        {showActionButtons && (
+          <ActionButtons onCapture={onCapture} onSearchNew={onSearchNew} />
+        )}
       </div>
     </div>
   );
