@@ -13,7 +13,7 @@ export default function CapturedPokemons() {
 
   const fetchCapturedPokemons = async () => {
     try {
-      const response = await fetch("/api/captured-pokemons");
+      const response = await fetch("/api/pokemons");
       const data = await response.json();
       setPokemons(data);
     } catch (error) {
@@ -26,8 +26,8 @@ export default function CapturedPokemons() {
   }, []);
 
   const getCardColor = (pokemon: Pokemon) => {
-    const primaryType = pokemon.types[0]?.type?.name?.toLowerCase();
-    return mapPokemonTypeColor[primaryType] || "bg-gray-500";
+    const primaryType = pokemon.types[0].toLowerCase();
+    return mapPokemonTypeColor[primaryType];
   };
 
   const handleCardClick = (pokemon: Pokemon) => {
@@ -43,12 +43,9 @@ export default function CapturedPokemons() {
   const releasePokemon = async () => {
     if (!selectedPokemon) return;
     try {
-      const response = await fetch(
-        `/api/captured-pokemons/${selectedPokemon.name}`,
-        {
-          method: "DELETE",
-        },
-      );
+      const response = await fetch(`/api/pokemons/${selectedPokemon.name}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
         setPokemons((prevPokemons) =>
           prevPokemons.filter((p) => p.name !== selectedPokemon.name),

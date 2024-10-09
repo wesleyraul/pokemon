@@ -8,13 +8,11 @@ export function usePokemon() {
 
   const fetchRandomPokemon = async () => {
     const randomId = Math.floor(Math.random() * 151) + 1;
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${randomId}`,
-    );
+    const response = await fetch(`/api/fetch-pokemon/${randomId}`);
     const data = await response.json();
     setPokemon(data);
 
-    const type = data?.types[0]?.type?.name?.toLowerCase();
+    const type = data?.types[0].toLowerCase();
     setCardColor(type ? mapPokemonTypeColor[type] : "bg-orange-500");
   };
 

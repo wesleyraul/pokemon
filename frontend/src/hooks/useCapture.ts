@@ -14,12 +14,16 @@ export function useCapture(
 
     const pokemonName = pokemon?.name ?? "";
     if (success) {
-      setCaptureMessage(`Parabéns! Você capturou o ${pokemonName}!`);
-      await fetch("/api/capture", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pokemon),
-      });
+      try {
+        await fetch("/api/pokemons", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pokemon),
+        });
+        setCaptureMessage(`Parabéns! Você capturou o ${pokemonName}!`);
+      } catch (e) {
+        setCaptureMessage(`Erro ao capturar o pokemon`);
+      }
     } else {
       setCaptureMessage(`Oh não! O ${pokemonName} escapou!`);
     }

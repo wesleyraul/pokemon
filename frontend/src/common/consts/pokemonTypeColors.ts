@@ -4,7 +4,7 @@ export const mapPokemonTypeColor = {
   water: "bg-blue-500",
   normal: "bg-red-300",
   psychic: "bg-amber-300",
-  bug: "bg-esmerald-500",
+  bug: "bg-green-800",
   dragon: "bg-teal-800",
   electric: "bg-gray-600",
   rock: "bg-zinc-700",
@@ -13,4 +13,5 @@ export const mapPokemonTypeColor = {
   poison: "bg-purple-800",
   ground: "bg-amber-800",
   ice: "bg-cyan-400",
+  fairy: "bg-pink-700",
 };

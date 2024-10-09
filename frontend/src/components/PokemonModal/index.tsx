@@ -32,12 +32,12 @@ export default function PokemonModal({
         <h2 className="text-2xl font-bold mb-4">{pokemonName}</h2>
         <Image
           className="block ml-auto mr-auto"
-          src={pokemon.sprites.front_default}
+          src={pokemon.sprite}
           alt={pokemon.name}
           width={200}
           height={200}
         />
-        <p>Tipos: {pokemon.types.map((type) => type.type.name).join(", ")}</p>
+        <p>Tipos: {pokemon.types.join(", ")}</p>
         <p>Peso: {pokemon.weight}</p>
         <p>Altura: {pokemon.height}</p>
 

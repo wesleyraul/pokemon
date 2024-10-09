@@ -19,8 +19,7 @@ export default function PokemonCard({
 }: PokemonCardProps) {
   const pokemonName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const pokemonType =
-    pokemon.types[0].type.name[0].toUpperCase() +
-    pokemon.types[0].type.name.slice(1);
+    pokemon.types[0][0].toUpperCase() + pokemon.types[0].slice(1);
 
   return (
     <div
@@ -28,7 +27,7 @@ export default function PokemonCard({
     >
       <div className="relative pt-10 px-10 flex items-center justify-center">
         <Image
-          src={pokemon.sprites.front_default}
+          src={pokemon.sprite}
           alt={pokemon.name}
           width={200}
           height={200}
