@@ -12,10 +12,15 @@ export class PokemonRepository {
   ) {}
 
   async create(createPokemonDto: CreatePokemonDto): Promise<Pokemon> {
+    const repeat = await this.findOne(createPokemonDto.name);
+    if (repeat) throw new Error('Pokemon já existe');
     const pokemon = this.pokemonRepository.create(createPokemonDto);
     return await this.pokemonRepository.save(pokemon);
   }
 
+  async findOne(name: string): Promise<Pokemon> {
+    return await this.pokemonRepository.findOneBy({ name: name });
+  }
   async findAll(): Promise<Pokemon[]> {
     return await this.pokemonRepository.find();
   }

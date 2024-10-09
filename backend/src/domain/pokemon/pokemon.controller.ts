@@ -20,20 +20,24 @@ export class PokemonController {
   @Post()
   @UsePipes(ConvertIntegerToStringPipe)
   async create(@Body() createPokemonDto: CreatePokemonDto) {
-    const pokemon = await this.pokemonService.create(createPokemonDto);
+    try {
+      const pokemon = await this.pokemonService.create(createPokemonDto);
 
-    if (!pokemon) {
-      throw new HttpException(
-        'Failed to insert Pokémon',
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
+      if (!pokemon) {
+        return new HttpException(
+          'Failed to insert Pokémon',
+          HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
+
+      return {
+        statusCode: HttpStatus.CREATED,
+        message: 'Pokémon inserted successfully',
+        data: pokemon,
+      };
+    } catch (e) {
+      return new HttpException(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    return {
-      statusCode: HttpStatus.CREATED,
-      message: 'Pokémon inserted successfully',
-      data: pokemon,
-    };
   }
 
   @Get()
