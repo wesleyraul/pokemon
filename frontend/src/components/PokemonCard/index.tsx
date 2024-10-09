@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ActionButtons from "@/components/ActionButtons";
-import { Pokemon } from "@/interfaces/pokemon.interface";
+import { Pokemon } from "@/common/interfaces/pokemon.interface";
 
 interface PokemonCardProps {
   pokemon: Pokemon;

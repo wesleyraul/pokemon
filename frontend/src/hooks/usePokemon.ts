@@ -1,22 +1,6 @@
 import { useState, useEffect } from "react";
-import { Pokemon } from "@/interfaces/pokemon.interface";
-
-const mapPokemonTypeColor = {
-  grass: "bg-green-500",
-  fire: "bg-red-500",
-  water: "bg-blue-500",
-  normal: "bg-red-300",
-  psychic: "bg-amber-300",
-  bug: "bg-esmerald-500",
-  dragon: "bg-teal-800",
-  electric: "bg-gray-600",
-  rock: "bg-zinc-700",
-  fighting: "bg-red-500",
-  ghost: "bg-fuchsia-600",
-  poison: "bg-purple-800",
-  ground: "bg-amber-800",
-  ice: "bg-cyan-400",
-};
+import { Pokemon } from "@/common/interfaces/pokemon.interface";
+import { mapPokemonTypeColor } from "@/common/consts/pokemonTypeColors";
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
