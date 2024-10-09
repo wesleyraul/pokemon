@@ -1,5 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Pokemon } from '../domain/pokemon/entities/pokemon.entity';
 
 export default registerAs(
   'database.config',
@@ -10,7 +11,7 @@ export default registerAs(
     username: process.env['DATABASE_USERNAME'],
     password: process.env['DATABASE_PASSWORD'],
     database: process.env['DATABASE'],
-    entities: [],
+    entities: [Pokemon],
     synchronize: true,
   }),
 );
