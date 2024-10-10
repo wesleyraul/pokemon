@@ -10,6 +10,7 @@ export async function GET(request: Request, context: any) {
     if (!response.ok) {
       throw new Error("Failed to fetch pokemon");
     }
+
     const pokemon = await response.json();
     const types = pokemon.types.map(
       (typeObject: { type: { name: any } }) => typeObject.type.name,
@@ -23,6 +24,9 @@ export async function GET(request: Request, context: any) {
     };
     return NextResponse.json(pokemonResponse);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch pokemon" });
+    return NextResponse.json(
+      { error: "Failed to fetch pokemon" },
+      { status: 500 },
+    );
   }
 }

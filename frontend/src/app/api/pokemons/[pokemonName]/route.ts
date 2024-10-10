@@ -6,7 +6,10 @@ export async function DELETE(req: Request, context: any) {
     const pokemonName = params.pokemonName;
 
     if (req.method !== "DELETE") {
-      return NextResponse.json({ message: "Only Delete requests allowed" });
+      return NextResponse.json(
+        { message: "Only Delete requests allowed" },
+        { status: 405 },
+      );
     }
     await fetch(`http://localhost:3001/pokemon/${pokemonName}`, {
       method: "DELETE",
