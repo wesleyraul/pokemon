@@ -9,7 +9,7 @@ export async function POST(req: { method: string; json: () => any }) {
       );
     }
     const data = await req.json();
-    const response = await fetch("http://localhost:3001/pokemon/", {
+    const response = await fetch(`${process.env.BACKEND_URL}/pokemon/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -33,7 +33,7 @@ export async function POST(req: { method: string; json: () => any }) {
 
 export async function GET() {
   try {
-    const response = await fetch("http://localhost:3001/pokemon/");
+    const response = await fetch(`${process.env.BACKEND_URL}/pokemon/`);
     if (!response.ok) {
       throw new Error("Failed to fetch captured pokemons");
     }

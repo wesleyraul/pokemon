@@ -11,7 +11,7 @@ export async function DELETE(req: Request, context: any) {
         { status: 405 },
       );
     }
-    await fetch(`http://localhost:3001/pokemon/${pokemonName}`, {
+    await fetch(`${process.env.BACKEND_URL}/pokemon/${pokemonName}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
