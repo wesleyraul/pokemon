@@ -5,6 +5,7 @@ import PokemonCard from "@/components/PokemonCard";
 import PokemonModal from "@/components/PokemonModal";
 import { Pokemon } from "@/common/interfaces/pokemon.interface";
 import { mapPokemonTypeColor } from "@/common/consts/pokemonTypeColors";
+import Link from "next/link";
 
 export default function CapturedPokemons() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -61,6 +62,12 @@ export default function CapturedPokemons() {
 
   return (
     <main className="bg-gray-400">
+      <Link href="/" className="fixed top-4 left-4">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+          Retornar
+        </button>
+      </Link>
+
       <div className="p-3 flex flex-wrap gap-4 justify-center min-h-screen">
         {pokemons.length > 0 ? (
           pokemons.map((pokemon) => (
